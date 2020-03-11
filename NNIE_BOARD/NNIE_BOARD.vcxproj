@@ -74,6 +74,10 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <ExecutablePath>D:\opencv_340\x64\vc14\bin;D:\software\SVP_PC\HiSVP_PC_V1.2.1.1bak\software\x64\vc14\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;$(ExecutablePath)</ExecutablePath>
+    <IncludePath>D:\software\SVP_PC\HiSVP_PC_V1.2.1.1bak\software\include;D:\software\SVP_PC\HiSVP_PC_V1.2.1.1bak\software\sample_simulator\include;D:\opencv_340\include;$(IncludePath)</IncludePath>
+    <ReferencePath>$(ReferencePath)</ReferencePath>
+    <LibraryPath>D:\opencv_340\x64\vc14\lib;D:\software\SVP_PC\HiSVP_PC_V1.2.1.1bak\software\x64\vc14\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -105,6 +109,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>opencv_world340d.lib;nnieit1.2d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -145,11 +150,30 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Classificacion_Net.h" />
+    <ClInclude Include="FCW_NET.h" />
+    <ClInclude Include="LandMark_Net.h" />
+    <ClInclude Include="MarsFace.h" />
+    <ClInclude Include="MT_O_NET.h" />
+    <ClInclude Include="MT_P_NET.h" />
+    <ClInclude Include="NNIE_Net.h" />
+    <ClInclude Include="nnie_sys.h" />
+    <ClInclude Include="POSE_NET.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Classificacion_Net.cpp" />
+    <ClCompile Include="FCW_NET.cpp" />
+    <ClCompile Include="LandMark_Net.cpp" />
+    <ClCompile Include="MarsFace.cpp" />
+    <ClCompile Include="MT_O_NET.cpp" />
+    <ClCompile Include="MT_P_NET.cpp" />
+    <ClCompile Include="nms.cpp" />
     <ClCompile Include="NNIE_BOARD.cpp" />
+    <ClCompile Include="NNIE_Net.cpp" />
+    <ClCompile Include="nnie_sys.cpp" />
+    <ClCompile Include="POSE_NET.cpp" />
     <ClCompile Include="stdafx.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

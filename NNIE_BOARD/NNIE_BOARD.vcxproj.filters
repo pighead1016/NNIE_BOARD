@@ -24,12 +24,69 @@
     <ClInclude Include="targetver.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="NNIE_Net.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="FCW_NET.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="POSE_NET.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="Classificacion_Net.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MT_P_NET.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MT_O_NET.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="MarsFace.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="LandMark_Net.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="nnie_sys.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="NNIE_BOARD.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="NNIE_Net.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="nnie_sys.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="FCW_NET.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="nms.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="POSE_NET.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="Classificacion_Net.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MT_P_NET.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MT_O_NET.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="MarsFace.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="LandMark_Net.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
