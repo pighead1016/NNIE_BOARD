@@ -77,23 +77,26 @@ NNIE_Net::NNIE_Net()
 NNIE_Net::~NNIE_Net()
 {
 	HI_S32 s32Ret;
-	for (int i = 0; i < stModel.u32NetSegNum; i++)
-	{
-		s32Ret = HI_MPI_SVP_NNIE_RemoveTskBuf(&astForwardCtrl[i].stTskBuf);
-		SAMPLE_SVP_CHECK_EXPR_RET_VOID(0 != s32Ret, SAMPLE_SVP_ERR_LEVEL_ERROR, "Error, HI_MPI_SVP_NNIE_RemoveTskBuf failed!\n");
-		if (stModel.astSeg[i].enNetType == SVP_NNIE_NET_TYPE_RECURRENT)
-			if (0 != stStepBuf.u64PhyAddr && 0 != stStepBuf.u64VirAddr)
-			{
-				SvpSampleFree(stStepBuf.u64PhyAddr, (HI_VOID *)stStepBuf.u64VirAddr);
-				stStepBuf.u64PhyAddr = 0;
-				stStepBuf.u64VirAddr = 0;
-			}
+	if (0 != stModelBuf.u64PhyAddr && 0 != stModelBuf.u64VirAddr) {
+		SAMPLE_SVP_CHECK_EXPR_RET_VOID(stModel.u32NetSegNum > 8, SAMPLE_SVP_ERR_LEVEL_FATAL, "Error, u32NetSegNum >8 failed!\n");
+		for (int i = 0; i < stModel.u32NetSegNum; i++)
+		{
+			s32Ret = HI_MPI_SVP_NNIE_RemoveTskBuf(&astForwardCtrl[i].stTskBuf);
+			SAMPLE_SVP_CHECK_EXPR_RET_VOID(0 != s32Ret, SAMPLE_SVP_ERR_LEVEL_ERROR, "Error, HI_MPI_SVP_NNIE_RemoveTskBuf failed!\n");
+			if (stModel.astSeg[i].enNetType == SVP_NNIE_NET_TYPE_RECURRENT)
+				if (0 != stStepBuf.u64PhyAddr && 0 != stStepBuf.u64VirAddr)
+				{
+					SvpSampleFree(stStepBuf.u64PhyAddr, (HI_VOID *)stStepBuf.u64VirAddr);
+					stStepBuf.u64PhyAddr = 0;
+					stStepBuf.u64VirAddr = 0;
+				}
+		}
+		s32Ret = SAMPLE_COMM_SVP_NNIE_ParamDeinit();
+		SAMPLE_SVP_CHECK_EXPR_RET_VOID(0 != s32Ret, SAMPLE_SVP_ERR_LEVEL_ERROR, "Error, SAMPLE_COMM_SVP_NNIE_ParamDeinit failed!\n");
+		//********************* release model
+		s32Ret = SAMPLE_COMM_SVP_NNIE_UnloadModel();
+		SAMPLE_SVP_CHECK_EXPR_RET_VOID(0 != s32Ret, SAMPLE_SVP_ERR_LEVEL_ERROR, "Error, SAMPLE_COMM_SVP_NNIE_UnloadModel failed!\n");
 	}
-	s32Ret = SAMPLE_COMM_SVP_NNIE_ParamDeinit();
-	SAMPLE_SVP_CHECK_EXPR_RET_VOID(0 != s32Ret, SAMPLE_SVP_ERR_LEVEL_ERROR, "Error, SAMPLE_COMM_SVP_NNIE_ParamDeinit failed!\n");
-	//********************* release model
-	s32Ret = SAMPLE_COMM_SVP_NNIE_UnloadModel();
-	SAMPLE_SVP_CHECK_EXPR_RET_VOID(0 != s32Ret, SAMPLE_SVP_ERR_LEVEL_ERROR, "Error, SAMPLE_COMM_SVP_NNIE_UnloadModel failed!\n");
 	if (!weight_matrix.empty())
 		weight_matrix.release();
 	if (!bias_matrix.empty())

@@ -89,5 +89,8 @@
     <ClCompile Include="LandMark_Net.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="common_alignment.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

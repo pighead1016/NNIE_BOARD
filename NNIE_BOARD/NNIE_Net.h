@@ -75,14 +75,14 @@ protected:
 	cv::Mat Inner(HI_S32* indata, bool Relu);
 	void Inner(HI_S32* indata, void* output, bool Relu);
 	HI_S32 NNIE_NET_INIT(HI_CHAR * pszModelFile);
-	HI_S32 NNIE_NET_INIT(HI_CHAR* buffer,HI_U64 size);
+	HI_S32 NNIE_NET_INIT(HI_CHAR* buffer, HI_U64 size);
 
 	HI_S32 SAMPLE_SVP_NNIE_Forward(SAMPLE_SVP_NNIE_INPUT_DATA_INDEX_S* pstInputDataIdx,
 		SAMPLE_SVP_NNIE_PROCESS_SEG_INDEX_S* pstProcSegIdx, HI_BOOL bInstant = HI_TRUE);
 	HI_S32 SVP_FillSrcData_Mat(SAMPLE_SVP_NNIE_INPUT_DATA_INDEX_S* stInputDataIdx, const cv::Mat src);
 
 	SVP_NNIE_MODEL_S    stModel;
-	SVP_MEM_INFO_S      stModelBuf;//store Model file
+	SVP_MEM_INFO_S      stModelBuf{0, 0, 0};//store Model file
 	SVP_NNIE_ID_E aenNnieCoreId[SVP_NNIE_MAX_NET_SEG_NUM] = { SVP_NNIE_ID_0 };
 	HI_U32 u32MaxInputNum=1;
 	HI_U32 u32MaxRoiNum=0;//if not roi net ,it must to be 0
